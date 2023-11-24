@@ -7,7 +7,7 @@ from solana.transaction import Transaction
 from solana.transaction import AccountMeta, TransactionInstruction
 from base58 import b58encode, b58decode
 
-client = Client("https://tame-cosmopolitan-dinghy.solana-mainnet.quiknode.pro/cc65fd6603c70a3b8dccaec0d2c86b6b2b2bb0b6/")
+client = Client("https://solana-mainnet.phantom.app/YBPpkkN4g91xDiAnTE9r0RcMkjg0sKUIWvAfoFVJ/")
 secret = "3fxwYQXDnedkddt9MHTRo9KLGCeFCQGAacdjPH3UGagfSxve1YRh2w3YgvKtTzJUdXVMWf3YhBWGHom71HhaCEur"
 keypair = Keypair.from_secret_key(b58decode(secret))
 toAddr = "MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr"
