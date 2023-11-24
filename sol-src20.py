@@ -6,6 +6,8 @@ from solana.system_program import TransferParams, transfer
 from solana.transaction import Transaction
 from solana.transaction import AccountMeta, TransactionInstruction
 from base58 import b58encode, b58decode
+import threading
+import time
 
 client = Client("https://solana-mainnet.phantom.app/YBPpkkN4g91xDiAnTE9r0RcMkjg0sKUIWvAfoFVJ/")
 secret = "your secret key"
@@ -25,10 +27,21 @@ def logMemo(message):
     print(f"发送完成 : hash地址为 https://solscan.io/tx/{resultOfTxhash}")
 
 data = {"p":"src-20","op":"mint","tick":"lamp","amt":"1000"}
-
-num = 10
-for count in range(num):
-    logMemo(str(data))
-
-    
-
+def mint(num):
+    for i in range(num):
+        logMemo(str(data))
+num = 5
+threads=[]
+for x in range(3):
+    t=threading.Thread(target=mint,args=(num,))
+    threads.append(t)
+for thr in threads:
+    thr.start()
+for thr in threads:
+    """
+    isAlive()方法可以返回True或False，用来判断是否还有没有运行结束
+    的线程。如果有的话就让主线程等待线程结束之后最后再结束。
+    """
+    if thr.is_alive():
+        thr.join()
+        
