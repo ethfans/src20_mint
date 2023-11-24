@@ -26,10 +26,10 @@ def logMemo(message):
     resultOfTxhash = transaction_result['result']
     print(f"发送完成 : hash地址为 https://solscan.io/tx/{resultOfTxhash}")
 
-data = {"p":"src-20","op":"mint","tick":"lamp","amt":"1000"}
+data = '{"p":"src-20","op":"mint","tick":"lamp","amt":"1000"}'
 def mint(num):
     for i in range(num):
-        logMemo(str(data))
+        logMemo(data)
 num = 5
 threads=[]
 for x in range(3):
